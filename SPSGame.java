@@ -6,16 +6,23 @@ public class SPSGame {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        showAboutGame();
-        generateRandom();
+        // showAboutGame();
+        // generateRandom();
         int usrnum = showAboutGame();
         int randomnum = generateRandom();
-        compareNumber(usrnum, randomnum);
+        // compareNumber(usrnum, randomnum);
+        if (usrnum < randomnum) {
+            System.out.println("User Win!");
+        } else if (usrnum > randomnum) {
+            System.out.println("Computer Win");
+        } else
+            System.out.println("Draw");
     }
 
     static int showAboutGame() {
         System.out.println("Enter Scissors->1 or Paper->2 or Stone->3");
         int input = scan.nextInt();
+        scan.nextLine();
         switch (input) {
             case 1:
                 System.out.println("Scissors");
@@ -52,14 +59,14 @@ public class SPSGame {
         return randomNumber;
     }
 
-    static void compareNumber(int usrnumber, int randomnumber) {
-        if (usrnumber < randomnumber) {
-            System.out.println("User Win!");
-        } else if (usrnumber > randomnumber) {
-            System.out.println("Computer Win");
-        } else
-            System.out.println("Draw");
-        // res = usrnum + randomnum;
-        // return res;
-    }
+    // static void compareNumber(int usrnumber, int randomnumber) {
+    // if (usrnumber < randomnumber) {
+    // System.out.println("User Win!");
+    // } else if (usrnumber > randomnumber) {
+    // System.out.println("Computer Win");
+    // } else
+    // System.out.println("Draw");
+    // // res = usrnum + randomnum;
+    // // return res;
+    // }
 }

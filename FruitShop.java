@@ -2,25 +2,31 @@ import java.util.Scanner;
 
 public class FruitShop {
     static Scanner input = new Scanner(System.in);
+    static int apple;
+    static int mango;
+    static int during;
+    static int orange;
 
     public static void main(String[] args) {
         // Fruit price list
-        int apple = 2000;
-        int mango = 1000;
-        int during = 10000;
-        int orange = 1500;
+        apple = 2000;
+        mango = 1000;
+        during = 10000;
+        orange = 1500;
         // Fruit Quantity
         int appleQuantity = 50;
         int mangoQuantity = 50;
         int duringQuantity = 50;
         int orangeQuantity = 50;
         // Fruit Selection
-        System.out.println("Welcome to the Fruit Shop!");
-        System.out.println("Available fruits:");
-        System.out.println("1. Apple - " + apple + "Kyat");
-        System.out.println("2. Mango - " + mango + "Kyat");
-        System.out.println("3. During - " + during + "Kyat");
-        System.out.println("4. Orange - " + orange + "Kyat");
+        // System.out.println("Welcome to the Fruit Shop!");
+        // System.out.println("Available fruits:");
+        // System.out.println("1. Apple - " + apple + " Kyat.");
+        // System.out.println("2. Mango - " + mango + " Kyat.");
+        // System.out.println("3. During - " + during + " Kyat.");
+        // System.out.println("4. Orange - " + orange + " Kyat.");
+
+        showMenu();
         // User input for fruit selection
         boolean condition = false;
         int fruitChoice = 0;
@@ -111,6 +117,28 @@ public class FruitShop {
         }
         // Calculate total cost
         System.out.println("Total cost: $" + totalCost);
+
+        System.out.println("Enter payment amount:");
+        int payment = input.nextInt();
+
+        if (payment >= totalCost) {
+            int change = payment - totalCost;
+            System.out.println("Change: " + change + " Kyat.");
+        } else {
+            System.out.println("Insufficient payment. Please try again.");
+        }
     }
 
+    public static void showMenu() {
+        System.out.println("╔══════════════════════════════════════╗");
+        System.out.println("║         Welcome to the Fruit Shop!   ║");
+        System.out.println("╠══════════════════════════════════════╣");
+        System.out.println("║   Available fruits:                  ║");
+        System.out.println("╠══════════════════════════════════════╣");
+        System.out.printf("║ 1. %-10s - %5d Kyat           ║\n", "Apple", apple);
+        System.out.printf("║ 2. %-10s - %5d Kyat           ║\n", "Mango", mango);
+        System.out.printf("║ 3. %-10s - %5d Kyat           ║\n", "During", during);
+        System.out.printf("║ 4. %-10s - %5d Kyat           ║\n", "Orange", orange);
+        System.out.println("╚══════════════════════════════════════╝");
+    }
 }

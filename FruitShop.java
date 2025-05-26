@@ -85,17 +85,20 @@ public class FruitShop {
                     break;
             }
             // Check if the user wants to continue shopping
-            System.out.println("Do you want to continue shopping? (y/n)");
-            String continueShopping = input.next();
-            if (continueShopping.equalsIgnoreCase("n")) {
-                condition = true;
-            } else if (continueShopping.equalsIgnoreCase("y")) {
-                // Calculate first result
+            boolean ynflag = false;
+            while (!ynflag) {
+                System.out.println("Do you want to continue shopping? (y/n)");
+                String continueShopping = input.next();
+                if (continueShopping.equalsIgnoreCase("n")) {
+                    ynflag = true;
+                } else if (continueShopping.equalsIgnoreCase("y")) {
+                    // Calculate first result
 
-                condition = false;
-            } else {
-                System.out.println("Invalid input. Please enter 'y' or 'n'.");
-                continue;
+                    ynflag = false;
+                } else {
+                    System.out.println("Invalid input. Please enter 'y' or 'n'.");
+                    continue;
+                }
             }
             switch (fruitChoice) {
                 case 1:

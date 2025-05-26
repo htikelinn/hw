@@ -8,50 +8,98 @@ public class SPSGame {
     public static void main(String[] args) {
         // showAboutGame();
         // generateRandom();
-        int usrnum = showAboutGame();
-        int randomnum = generateRandom();
+        boolean condition = false;
+        while (!condition) {
+            int usrnum = showAboutGame();
+
+            if (usrnum == 4) {
+                System.out.println("Exit the game.");
+                return;
+            } else {
+                int randomnum = generateRandom();
+                compareNumber(usrnum, randomnum);
+            }
+            System.out.println("Do you want to Playagain? (y/n)");
+            String nextRound = scan.next();
+            if (nextRound.equalsIgnoreCase("n")) {
+                condition = true;
+                // System.out.println("Thanks for playing!");
+                System.out.println("Do you want to see the result? (y/n)");
+                String seeResult = scan.next();
+                if (seeResult.equalsIgnoreCase("y")) {
+                    System.out.println("You can see the result.");
+                } else if (seeResult.equalsIgnoreCase("n")) {
+                    System.out.println("Thanks for playing!");
+                } else {
+                    System.out.println("Invalid input. Please enter 'y' or 'n'.");
+                    continue;
+                }
+            } else if (nextRound.equalsIgnoreCase("y")) {
+                // Calculate first result
+                condition = false;
+                // continue;
+            } else {
+                System.out.println("Invalid input. Please enter 'y' or 'n'.");
+                continue;
+            }
+        }
+
         // compareNumber(usrnum, randomnum);
-        if (usrnum < randomnum) {
-            System.out.println("User Win!");
-        } else if (usrnum > randomnum) {
-            System.out.println("Computer Win");
-        } else
-            System.out.println("Draw");
+
     }
 
     static int showAboutGame() {
-        System.out.println("Enter Scissors->1 or Paper->2 or Stone->3");
-        int input = scan.nextInt();
-        scan.nextLine();
-        switch (input) {
-            case 1:
-                System.out.println("Scissors");
-                break;
-            case 2:
-                System.out.println("Paper");
-                break;
-            case 3:
-                System.out.println("Stone");
-                break;
-            default:
-                System.out.println("Wrong input Error");
-                break;
+        boolean flag = false;
+        int input = 0;
+        while (!flag) {
+            System.out.println("Welcome to the Scissors, Paper, Stone Game.");
+            System.out.println("***************************************");
+            System.out.println("1. Scissors");
+            System.out.println("2. Paper");
+            System.out.println("3. Stone");
+            System.out.println("4. Exit");
+            // input user (choice menu)
+            System.out.println("Enter your choice:");
+            input = scan.nextInt();
+            // scan.nextLine();
+            if (input < 1 || input > 4) {
+                System.out.println("Invalid selection. Please try again.");
+                continue;
+            } else
+                switch (input) {
+                    case 1:
+                        System.out.print("Scissors");
+                        return input;
+                    case 2:
+                        System.out.print("Paper");
+                        return input;
+                    case 3:
+                        System.out.print("Stone");
+                        return input;
+                    case 4:
+                        // System.out.print("Exit");
+                        flag = true;
+                        break;
+                    default:
+                        System.out.print("Wrong input Error");
+                        break;
+                }
         }
         return input;
     }
 
     static int generateRandom() {
-        int randomNumber = ThreadLocalRandom.current().nextInt(1, 3);
-        System.out.println(randomNumber);
+        int randomNumber = ThreadLocalRandom.current().nextInt(1, 4);
+        System.out.print(" VS ");
         switch (randomNumber) {
             case 1:
-                System.out.println("Scissors");
+                System.out.print("Scissors");
                 break;
             case 2:
-                System.out.println("Paper");
+                System.out.print("Paper");
                 break;
             case 3:
-                System.out.println("Stone");
+                System.out.print("Stone");
                 break;
             default:
                 break;
@@ -59,14 +107,14 @@ public class SPSGame {
         return randomNumber;
     }
 
-    // static void compareNumber(int usrnumber, int randomnumber) {
-    // if (usrnumber < randomnumber) {
-    // System.out.println("User Win!");
-    // } else if (usrnumber > randomnumber) {
-    // System.out.println("Computer Win");
-    // } else
-    // System.out.println("Draw");
-    // // res = usrnum + randomnum;
-    // // return res;
-    // }
+    static void compareNumber(int usrnumber, int randomnumber) {
+        if (usrnumber < randomnumber) {
+            System.out.println("\n User Win!");
+        } else if (usrnumber > randomnumber) {
+            System.out.println("\n Computer Win!");
+        } else
+            System.out.println("\n Draw");
+        // // res = usrnum + randomnum;
+        // // return res;
+    }
 }
